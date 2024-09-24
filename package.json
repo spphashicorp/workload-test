@@ -1,0 +1,8 @@
+{
+  "name": "workload-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/spphashicorp/workload-test.git",
+  "author": "Stephane Pericat <stephane.pericat@hashicorp.com>",
+  "license": "MIT"
+}
