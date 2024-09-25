@@ -18,15 +18,17 @@ on:
   workflow_dispatch:
 
 jobs:
-  send:
-    name: Send new verison
+  job:
+    environment: Production
     runs-on: ubuntu-latest
     steps:
-      - name: JWT Generator
-        id: jwtGenerator
-        uses: morzzz007/github-actions-jwt-generator@1.0.1
-        with:
-          secret: topsecret
-          payload: '{"hello":"world"}'
-      - name: DUMP Token
-        run: echo ${{steps.jwtGenerator.outputs.token}}
+    - name: Install OIDC Client from Core Package
+      run: npm install @actions/core@1.6.0 @actions/http-client
+    - name: Get Id Token
+      uses: actions/github-script@v6
+      id: idtoken
+      with:
+        script: |
+          const coredemo = require('@actions/core')
+          let id_token = await coredemo.getIDToken()
+          coredemo.setOutput('id_token', id_token)
