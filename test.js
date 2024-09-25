@@ -8,7 +8,8 @@ import {
 //   process.env.ACTIONS_ID_TOKEN_REQUEST_TOKEN,
 // )
 const main = async () => {
-  const token = await getIDToken()
+  const token = await getIDToken();
+  console.log('TOKEN???', token);
 }
 
 main()
